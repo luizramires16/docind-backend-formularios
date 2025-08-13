@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato - DOC IND - Documentação Especializada</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #4a7c59, #6b9b7c);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        main {
+            padding: 3rem 0;
+        }
+
+        .form-section {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .form-section h2 {
+            color: #4a7c59;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .required {
+            color: #e74c3c;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #4a7c59;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+            margin-right: 0.5rem;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #4a7c59, #6b9b7c);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(74, 124, 89, 0.3);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .contact-info {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .contact-info h3 {
+            color: #4a7c59;
+            margin-bottom: 1rem;
+        }
+
+        .contact-item {
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 5px;
+        }
+
+        .contact-item strong {
+            color: #4a7c59;
+        }
+
+        @media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .form-section, .contact-info {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Entre em Contato</h1>
+            <p>Estamos prontos para atender suas necessidades de documentação técnica</p>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="form-section">
+                <h2>Envie sua Mensagem</h2>
+                <p>Preencha o formulário abaixo e entraremos em contato o mais breve possível.</p>
+                
+                <form data-form="contato">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="nome">Nome Completo <span class="required">*</span></label>
+                            <input type="text" id="nome" name="nome" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="empresa">Empresa</label>
+                            <input type="text" id="empresa" name="empresa">
+                        </div>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="email">E-mail <span class="required">*</span></label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefone">Telefone</label>
+                            <input type="tel" id="telefone" name="telefone">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="assunto">Assunto <span class="required">*</span></label>
+                        <select id="assunto" name="assunto" required>
+                            <option value="">Selecione o assunto</option>
+                            <option value="Solicitação de Orçamento">Solicitação de Orçamento</option>
+                            <option value="Dúvidas sobre Serviços">Dúvidas sobre Serviços</option>
+                            <option value="Proposta de Parceria">Proposta de Parceria</option>
+                            <option value="Suporte Técnico">Suporte Técnico</option>
+                            <option value="Feedback">Feedback</option>
+                            <option value="Outro">Outro</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mensagem">Mensagem <span class="required">*</span></label>
+                        <textarea id="mensagem" name="mensagem" placeholder="Descreva sua necessidade ou dúvida em detalhes..." required></textarea>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="newsletter" name="newsletter">
+                        <label for="newsletter">Desejo receber newsletters com novidades e conteúdos técnicos</label>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="privacidade" name="privacidade" required>
+                        <label for="privacidade">Li e concordo com a política de privacidade <span class="required">*</span></label>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Enviar Mensagem</button>
+                </form>
+            </div>
+
+            <div class="contact-info">
+                <h3>Informações de Contato</h3>
+                
+                <div class="contact-item">
+                    <strong>📞 Telefone</strong><br>
+                    (11) 95904-7055<br>
+                    Segunda a sexta, 8h às 18h
+                </div>
+
+                <div class="contact-item">
+                    <strong>✉️ E-mail</strong><br>
+                    docind@docind.com.br<br>
+                    Resposta em até 24 horas
+                </div>
+
+                <div class="contact-item">
+                    <strong>🌍 Atendimento</strong><br>
+                    Remoto em todo o Brasil<br>
+                    Reuniões online disponíveis
+                </div>
+
+                <div class="contact-item">
+                    <strong>⏰ Horário de Funcionamento</strong><br>
+                    Segunda a sexta: 8h às 18h<br>
+                    Sábado: 8h às 12h<br>
+                    Fuso horário: Brasília (GMT-3)
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="/js/formularios-backend.js"></script>
+</body>
+</html>
+

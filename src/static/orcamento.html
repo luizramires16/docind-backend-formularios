@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orçamento - DOC IND - Documentação Especializada</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #4a7c59, #6b9b7c);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        main {
+            padding: 3rem 0;
+        }
+
+        .form-section {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .form-section h2 {
+            color: #4a7c59;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .form-section h3 {
+            color: #4a7c59;
+            margin: 2rem 0 1rem 0;
+            font-size: 1.4rem;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .required {
+            color: #e74c3c;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #4a7c59;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 5px;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+            margin-right: 0.5rem;
+            margin-top: 0.2rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .service-card {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 1rem;
+            transition: border-color 0.3s, background-color 0.3s;
+        }
+
+        .service-card:hover {
+            border-color: #4a7c59;
+        }
+
+        .service-card.selected {
+            border-color: #4a7c59;
+            background-color: #e8f5e8;
+        }
+
+        .service-card input[type="checkbox"] {
+            width: auto;
+            margin-right: 0.5rem;
+        }
+
+        .service-card label {
+            cursor: pointer;
+            font-weight: 600;
+            color: #4a7c59;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #4a7c59, #6b9b7c);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(74, 124, 89, 0.3);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .info-box {
+            background: #e8f5e8;
+            border-left: 4px solid #4a7c59;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .info-box h4 {
+            color: #4a7c59;
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .form-grid, .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .form-section {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Solicite seu Orçamento</h1>
+            <p>Receba uma proposta personalizada para suas necessidades de documentação técnica</p>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="info-box">
+                <h4>Como funciona?</h4>
+                <p>1. Preencha o formulário com detalhes do seu projeto → 2. Nossa equipe analisa suas necessidades → 3. Entramos em contato em até 24 horas → 4. Apresentamos uma proposta personalizada</p>
+            </div>
+
+            <div class="form-section">
+                <h2>Conte-nos sobre seu projeto</h2>
+                <p>Preencha o formulário abaixo com o máximo de detalhes possível. Quanto mais informações você fornecer, mais preciso será nosso orçamento.</p>
+                
+                <form data-form="orcamento">
+                    <h3>Informações de Contato</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="nome">Nome Completo <span class="required">*</span></label>
+                            <input type="text" id="nome" name="nome" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="empresa">Empresa <span class="required">*</span></label>
+                            <input type="text" id="empresa" name="empresa" required>
+                        </div>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="email">E-mail <span class="required">*</span></label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefone">Telefone</label>
+                            <input type="tel" id="telefone" name="telefone">
+                        </div>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="cargo">Cargo/Função</label>
+                            <input type="text" id="cargo" name="cargo">
+                        </div>
+                        <div class="form-group">
+                            <label for="setor">Setor de Atuação</label>
+                            <select id="setor" name="setor">
+                                <option value="">Selecione o setor</option>
+                                <option value="Automotivo">Automotivo</option>
+                                <option value="Ferroviário">Ferroviário</option>
+                                <option value="Agrícola">Agrícola</option>
+                                <option value="Aeroespacial">Aeroespacial</option>
+                                <option value="Alimentício">Alimentício</option>
+                                <option value="Metalúrgico">Metalúrgico</option>
+                                <option value="Mineração">Mineração</option>
+                                <option value="Infraestrutura">Infraestrutura</option>
+                                <option value="Outro">Outro</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <h3>Serviços de Interesse</h3>
+                    <p>Selecione todos os serviços que você gostaria de incluir no orçamento:</p>
+                    
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <input type="checkbox" id="servico_manuais" name="servico_manuais">
+                            <label for="servico_manuais">Manuais Técnicos Personalizados</label>
+                        </div>
+                        <div class="service-card">
+                            <input type="checkbox" id="servico_fmea" name="servico_fmea">
+                            <label for="servico_fmea">Análise de Falhas Estratégica (FMEA)</label>
+                        </div>
+                        <div class="service-card">
+                            <input type="checkbox" id="servico_manutencao" name="servico_manutencao">
+                            <label for="servico_manutencao">Gestão de Manutenção Inteligente</label>
+                        </div>
+                        <div class="service-card">
+                            <input type="checkbox" id="servico_qualidade" name="servico_qualidade">
+                            <label for="servico_qualidade">Documentação de Qualidade e Conformidade</label>
+                        </div>
+                        <div class="service-card">
+                            <input type="checkbox" id="servico_consultoria" name="servico_consultoria">
+                            <label for="servico_consultoria">Consultoria Estratégica em Documentação</label>
+                        </div>
+                        <div class="service-card">
+                            <input type="checkbox" id="servico_implantacao" name="servico_implantacao">
+                            <label for="servico_implantacao">Implantação de Sistemas e Treinamentos</label>
+                        </div>
+                    </div>
+
+                    <h3>Detalhes do Projeto</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="urgencia">Urgência do Projeto</label>
+                            <select id="urgencia" name="urgencia">
+                                <option value="">Selecione a urgência</option>
+                                <option value="Baixa (mais de 3 meses)">Baixa (mais de 3 meses)</option>
+                                <option value="Média (1 a 3 meses)">Média (1 a 3 meses)</option>
+                                <option value="Alta (até 1 mês)">Alta (até 1 mês)</option>
+                                <option value="Crítica (até 2 semanas)">Crítica (até 2 semanas)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="orcamento_estimado">Orçamento Estimado</label>
+                            <select id="orcamento_estimado" name="orcamento_estimado">
+                                <option value="">Selecione uma faixa</option>
+                                <option value="Até R$ 10.000">Até R$ 10.000</option>
+                                <option value="R$ 10.000 - R$ 25.000">R$ 10.000 - R$ 25.000</option>
+                                <option value="R$ 25.000 - R$ 50.000">R$ 25.000 - R$ 50.000</option>
+                                <option value="R$ 50.000 - R$ 100.000">R$ 50.000 - R$ 100.000</option>
+                                <option value="Acima de R$ 100.000">Acima de R$ 100.000</option>
+                                <option value="Não tenho ideia">Não tenho ideia</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="equipamentos">Equipamentos/Sistemas Envolvidos</label>
+                        <textarea id="equipamentos" name="equipamentos" placeholder="Descreva os equipamentos, máquinas ou sistemas que serão documentados"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="descricao_projeto">Descrição Detalhada do Projeto</label>
+                        <textarea id="descricao_projeto" name="descricao_projeto" placeholder="Descreva em detalhes o que você precisa, objetivos, expectativas e qualquer informação relevante" required></textarea>
+                    </div>
+
+                    <h3>Informações Adicionais</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="documentacao_existente">Possui documentação existente?</label>
+                            <select id="documentacao_existente" name="documentacao_existente">
+                                <option value="">Selecione</option>
+                                <option value="Sim, completa">Sim, completa</option>
+                                <option value="Sim, parcial">Sim, parcial</option>
+                                <option value="Não">Não</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="normas">Normas Específicas</label>
+                            <input type="text" id="normas" name="normas" placeholder="Ex: ISO 9001, ABNT NBR, etc.">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="observacoes">Observações Adicionais</label>
+                        <textarea id="observacoes" name="observacoes" placeholder="Qualquer informação adicional que considere relevante"></textarea>
+                    </div>
+
+                    <h3>Preferências de Contato</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="horario_contato">Melhor horário para contato</label>
+                            <select id="horario_contato" name="horario_contato">
+                                <option value="">Selecione</option>
+                                <option value="Manhã (8h às 12h)">Manhã (8h às 12h)</option>
+                                <option value="Tarde (12h às 18h)">Tarde (12h às 18h)</option>
+                                <option value="Qualquer horário">Qualquer horário</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="meio_contato">Meio de contato preferido</label>
+                            <select id="meio_contato" name="meio_contato">
+                                <option value="">Selecione</option>
+                                <option value="WhatsApp">WhatsApp</option>
+                                <option value="E-mail">E-mail</option>
+                                <option value="Telefone">Telefone</option>
+                                <option value="Qualquer um">Qualquer um</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Solicitar Orçamento</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Adicionar interatividade aos cards de serviços
+        document.addEventListener('DOMContentLoaded', function() {
+            const serviceCards = document.querySelectorAll('.service-card');
+            
+            serviceCards.forEach(card => {
+                const checkbox = card.querySelector('input[type="checkbox"]');
+                
+                card.addEventListener('click', function(e) {
+                    if (e.target.type !== 'checkbox') {
+                        checkbox.checked = !checkbox.checked;
+                    }
+                    
+                    if (checkbox.checked) {
+                        card.classList.add('selected');
+                    } else {
+                        card.classList.remove('selected');
+                    }
+                });
+                
+                checkbox.addEventListener('change', function() {
+                    if (this.checked) {
+                        card.classList.add('selected');
+                    } else {
+                        card.classList.remove('selected');
+                    }
+                });
+            });
+        });
+    </script>
+    <script src="/js/formularios-backend.js"></script>
+</body>
+</html>
+
